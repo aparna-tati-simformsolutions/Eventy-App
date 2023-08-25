@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Eventy</string>
+    <string name="onboarding_title1">Welcome to Online Event App</string>
+    <string name="onboarding_desc1">Find the Best event near you with just one of best app</string>
+    <string name="onboarding_title2">Find And Book A Event</string>
+    <string name="onboarding_desc2">Find the Best event near you with just one of best app</string>
+    <string name="onboarding_title3">Organized A Premium Event</string>
+    <string name="onboarding_desc3">Find the Best event near you with just one of best app</string>
+    <string name="title"></string>
 </resources>

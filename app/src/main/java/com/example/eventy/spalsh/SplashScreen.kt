@@ -14,21 +14,25 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Cyan
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavController
 import com.example.eventy.R
+import com.example.eventy.navigation.Screens
 import com.example.eventy.ui.theme.RobotoFamily
 import com.example.eventy.ui.theme.RumRasianFamily
 import com.example.eventy.ui.theme.SantisaOneFamily
+import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun HideStatusBar() {
@@ -47,8 +51,12 @@ fun HideStatusBar() {
 }
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(navController: NavController) {
     HideStatusBar()
+    LaunchedEffect(Unit) {
+        delay(2.seconds)
+            navController.navigate(Screens.OnboardingScreen.route)
+    }
     Column(
         modifier = Modifier.background(color = colorResource(id = R.color.cyan)),
         verticalArrangement = Arrangement.Center,
