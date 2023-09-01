@@ -29,7 +29,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.eventy.R
+import com.example.eventy.navigation.Screens
 import com.example.eventy.onboarding.model.OnboardingModel
 import com.example.eventy.ui.theme.RobotoFamily
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -41,7 +43,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(navController: NavController) {
     val onboardingData = OnboardingModel.getData()
     val pageState = rememberPagerState()
     val scope = rememberCoroutineScope()
@@ -58,9 +60,9 @@ fun OnboardingScreen() {
                 .fillMaxWidth()
         ) { page ->
             if (page == 3) {
-                OnboardingItem(item = onboardingData[page], flag = true, pageState = pageState, scope = scope)
+                OnboardingItem(item = onboardingData[page], flag = true, pageState = pageState, scope = scope, navController = navController)
             } else {
-                OnboardingItem(item = onboardingData[page], flag = false, pageState = pageState, scope = scope)
+                OnboardingItem(item = onboardingData[page], flag = false, pageState = pageState, scope = scope, navController = navController)
             }
         }
     }
@@ -68,7 +70,7 @@ fun OnboardingScreen() {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun OnboardingItem(item: OnboardingModel, flag: Boolean, pageState: PagerState, scope: CoroutineScope) {
+fun OnboardingItem(item: OnboardingModel, flag: Boolean, pageState: PagerState, scope: CoroutineScope, navController: NavController) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -92,14 +94,16 @@ fun OnboardingItem(item: OnboardingModel, flag: Boolean, pageState: PagerState, 
             )
             Spacer(modifier = Modifier.height(14.dp))
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate(Screens.LogInScreen.route)
+                },
                 colors = ButtonDefaults.buttonColors(
                     contentColor = Color.White,
                     containerColor = colorResource(id = R.color.cyan)
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(25.dp)
+                    .padding(20.dp)
                     .height(50.dp)
             ) {
                 Text(
@@ -112,7 +116,7 @@ fun OnboardingItem(item: OnboardingModel, flag: Boolean, pageState: PagerState, 
                 onClick = {}, 
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(25.dp)
+                    .padding(20.dp)
                     .height(50.dp),
                 colors = ButtonDefaults.buttonColors(
                     contentColor = colorResource(id = R.color.cyan),

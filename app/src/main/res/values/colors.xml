@@ -10,4 +10,6 @@
     <color name="cyan">#11C9BD</color>
     <color name="gray">#A6A3B8</color>
     <color name="blue">#273147</color>
+    <color name="light_blue">#363D4E</color>
+    <color name="textfield_background">#F9F9FF</color>
 </resources>
