@@ -61,13 +61,13 @@ fun LogInScreen(navController: NavController) {
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 20.dp
             ),
-            modifier = Modifier.padding(25.dp)
+            modifier = Modifier.padding(20.dp)
         ) {
             Column(
                 modifier = Modifier
                     .background(Color.White)
                     .fillMaxWidth()
-                    .padding(14.dp)
+                    .padding(21.dp)
             ) {
                 Spacer(modifier = Modifier.height(25.dp))
                 EditText(icon = R.drawable.email, inputType = KeyboardType.Email, placeHolderText = "Email")
@@ -122,7 +122,7 @@ fun LogInScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(20.dp))
         Button(
             onClick = {
-
+                navController.navigate(Screens.PhoneScreen.route)
             },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
@@ -130,7 +130,7 @@ fun LogInScreen(navController: NavController) {
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(25.dp)
+                .padding(30.dp)
                 .height(50.dp)
         ) {
             Text(
