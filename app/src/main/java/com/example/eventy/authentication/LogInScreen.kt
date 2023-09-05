@@ -18,11 +18,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -86,19 +87,24 @@ fun LogInScreen(navController: NavController) {
             Spacer(modifier = Modifier.width(60.dp))
         }
         Spacer(modifier = Modifier.height(50.dp))
-        Surface(
-            modifier = Modifier
-                .padding(20.dp)
-                .fillMaxWidth()
-                .background(Color.White),
-            shadowElevation = 16.dp,
-            shape = RoundedCornerShape(20.dp)
+        Card(
+            shape = RoundedCornerShape(30.dp),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 20.dp
+            ),
+            modifier = Modifier.padding(25.dp)
         ) {
-            Column(modifier = Modifier.padding(14.dp)) {
+            Column(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth()
+                    .padding(14.dp)
+            ) {
+                Spacer(modifier = Modifier.height(25.dp))
                 EditText(icon = R.drawable.email, inputType = KeyboardType.Email, placeHolderText = "Email")
                 Spacer(modifier = Modifier.height(20.dp))
                 EditText(icon = R.drawable.password, inputType = KeyboardType.Ascii, placeHolderText = "Password")
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(21.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth(),
@@ -141,6 +147,7 @@ fun LogInScreen(navController: NavController) {
                         )
                     }
                 }
+                Spacer(modifier = Modifier.height(20.dp))
             }
         }
         Spacer(modifier = Modifier.height(20.dp))
@@ -169,7 +176,6 @@ fun LogInScreen(navController: NavController) {
                 text = "Don’t have an account? ",
                 fontFamily = RobotoFamily,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.W500,
                 color = colorResource(id = R.color.light_blue)
             )
             Text(
@@ -213,6 +219,11 @@ fun EditText(icon: Int, inputType: KeyboardType, placeHolderText: String) {
                 colorResource(id = R.color.textfield_background),
                 RoundedCornerShape(percent = 50)
             ),
-        colors = TextFieldDefaults.textFieldColors(colorResource(id = R.color.light_blue)),
+        colors = TextFieldDefaults.textFieldColors(
+            textColor = colorResource(id = R.color.light_blue),
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent
+        ),
     )
 }

@@ -217,7 +217,10 @@ fun EditText(inputType: KeyboardType, placeHolderText: String) {
                 RoundedCornerShape(percent = 50)
             ),
         colors = TextFieldDefaults.textFieldColors(
-            colorResource(id = R.color.light_blue)
+            textColor = colorResource(id = R.color.light_blue),
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent
         )
     )
 }
