@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -42,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.eventy.R
+import com.example.eventy.common.TopAppBar
 import com.example.eventy.navigation.Screens
 import com.example.eventy.ui.theme.RobotoFamily
 
@@ -54,36 +54,11 @@ fun SignUpScreen(navController: NavController) {
             .padding(top = 30.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(50.dp)
-                    .clip(CircleShape)
-                    .background(Color.White)
-                    .clickable {
-                        navController.navigate(Screens.SplashScreen.route)
-                    }
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.baseline_arrow_back_24),
-                    contentDescription = null,
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
-            Text(
-                text = "Sign up",
-                fontFamily = RobotoFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = 22.sp
-            )
-            Spacer(modifier = Modifier.width(60.dp))
-        }
+        TopAppBar(
+            title = "Sign up",
+            navController = navController,
+            route = Screens.SplashScreen.route
+        )
         Card(
             shape = RoundedCornerShape(20.dp),
             modifier = Modifier.padding(20.dp)
