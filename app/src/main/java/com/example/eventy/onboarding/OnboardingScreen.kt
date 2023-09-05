@@ -113,7 +113,9 @@ fun OnboardingItem(item: OnboardingModel, flag: Boolean, pageState: PagerState, 
                 )
             }
             OutlinedButton(
-                onClick = {}, 
+                onClick = {
+                    navController.navigate(Screens.SignUpScreen.route)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(20.dp)

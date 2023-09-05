@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.eventy.authentication.LogInScreen
+import com.example.eventy.authentication.SignUpScreen
 import com.example.eventy.onboarding.OnboardingScreen
 import com.example.eventy.spalsh.SplashScreen
 
@@ -22,6 +23,9 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = Screens.LogInScreen.route) {
             LogInScreen(navController)
+        }
+        composable(route = Screens.SignUpScreen.route) {
+            SignUpScreen(navController)
         }
     }
 }

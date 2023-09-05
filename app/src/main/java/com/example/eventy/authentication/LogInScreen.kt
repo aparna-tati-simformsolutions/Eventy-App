@@ -95,9 +95,9 @@ fun LogInScreen(navController: NavController) {
             shape = RoundedCornerShape(20.dp)
         ) {
             Column(modifier = Modifier.padding(14.dp)) {
-                EditText(icon = R.drawable.email, inputType = KeyboardType.Email)
+                EditText(icon = R.drawable.email, inputType = KeyboardType.Email, placeHolderText = "Email")
                 Spacer(modifier = Modifier.height(20.dp))
-                EditText(icon = R.drawable.password, inputType = KeyboardType.Ascii)
+                EditText(icon = R.drawable.password, inputType = KeyboardType.Ascii, placeHolderText = "Password")
                 Spacer(modifier = Modifier.height(20.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -177,7 +177,10 @@ fun LogInScreen(navController: NavController) {
                 fontFamily = RobotoFamily,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.W500,
-                color = colorResource(id = R.color.cyan)
+                color = colorResource(id = R.color.cyan),
+                modifier = Modifier.clickable {
+                    navController.navigate(Screens.SignUpScreen.route)
+                }
             )
         }
     }
@@ -185,7 +188,7 @@ fun LogInScreen(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditText(icon: Int, inputType: KeyboardType) {
+fun EditText(icon: Int, inputType: KeyboardType, placeHolderText: String) {
     val text = remember { mutableStateOf("") }
     TextField(
         value = text.value,
@@ -199,6 +202,7 @@ fun EditText(icon: Int, inputType: KeyboardType) {
         leadingIcon = {
             Icon(painter = painterResource(id = icon), contentDescription = "")
         },
+        placeholder = { Text(text = placeHolderText) },
         shape = RoundedCornerShape(50),
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = inputType
