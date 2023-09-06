@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -82,13 +83,16 @@ fun PhoneScreen(navController: NavController) {
                     fontFamily = RobotoFamily
                 )
                 Spacer(modifier = Modifier.height(20.dp))
-                Column(
+                Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    // Dropdown component
                     Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.CenterStart
+                        modifier = Modifier.background(
+                            colorResource(id = R.color.textfield_background),
+                            RoundedCornerShape(percent = 50)
+                        ),
+                        contentAlignment = Alignment.CenterStart,
+
                     ) {
                         Text(
                             text = countryCode.value,
@@ -98,7 +102,7 @@ fun PhoneScreen(navController: NavController) {
                         )
                         DropdownMenu(
                             expanded = isDropdownExpanded.value,
-                            onDismissRequest = { isDropdownExpanded.value = false }
+                            onDismissRequest = { isDropdownExpanded.value = false },
                         ) {
                             // Replace these with your country codes
                             listOf("+1", "+44", "+91").forEach { code ->
@@ -162,7 +166,7 @@ fun PhoneScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(25.dp))
         Button(
             onClick = {
-                navController.navigate(Screens.PhoneScreen.route)
+                navController.navigate(Screens.OtpScreen.route)
             },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,

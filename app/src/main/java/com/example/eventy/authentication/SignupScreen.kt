@@ -172,7 +172,7 @@ fun SignUpScreen(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditText(inputType: KeyboardType, placeHolderText: String) {
+fun EditText(inputType: KeyboardType, placeHolderText: String?) {
     val text = remember { mutableStateOf("") }
     TextField(
         value = text.value,
@@ -183,7 +183,7 @@ fun EditText(inputType: KeyboardType, placeHolderText: String) {
         textStyle = TextStyle(
             fontSize = 16.sp
         ),
-        placeholder = { Text(text = placeHolderText) },
+        placeholder = { Text(text = placeHolderText ?: "") },
         shape = RoundedCornerShape(50),
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = inputType
