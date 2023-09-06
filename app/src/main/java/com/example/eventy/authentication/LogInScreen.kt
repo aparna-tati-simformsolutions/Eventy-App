@@ -112,7 +112,10 @@ fun LogInScreen(navController: NavController) {
                             fontWeight = FontWeight.W500,
                             fontSize = 12.sp,
                             fontFamily = RobotoFamily,
-                            textDecoration = TextDecoration.Underline
+                            textDecoration = TextDecoration.Underline,
+                            modifier = Modifier.clickable {
+                                navController.navigate(Screens.ForgetPasswordScreen.route)
+                            }
                         )
                     }
                 }

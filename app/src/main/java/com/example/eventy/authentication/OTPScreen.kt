@@ -149,13 +149,14 @@ fun OTPScreen(navController: NavController) {
                         fontSize = 16.sp,
                         fontWeight = FontWeight.W500
                     )
+
                 }
                 Spacer(modifier = Modifier.height(30.dp))
             }
         }
         Button(
             onClick = {
-                navController.navigate(Screens.OtpScreen.route)
+                navController.navigate(Screens.CreatePasswordScreen.route)
             },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
