@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import com.example.eventy.R
+import com.example.eventy.navigation.Screens
 import com.example.eventy.ui.theme.RobotoFamily
 
 @Composable
@@ -77,6 +78,7 @@ fun PasswordResetEmailSentDialog(onDismiss: () -> Unit, navController: NavContro
                 Button(
                     onClick = {
                         onDismiss()
+                        navController.navigate(Screens.ForgetPasswordOTPScreen.route)
                     },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,

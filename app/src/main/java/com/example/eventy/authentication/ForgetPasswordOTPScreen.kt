@@ -43,8 +43,9 @@ import com.example.eventy.navigation.Screens
 import com.example.eventy.ui.theme.RobotoFamily
 
 @Composable
-fun OTPScreen(navController: NavController) {
+fun ForgetPasswordOTPScreen(navController: NavController) {
     val focusManager = LocalFocusManager.current
+
     val (digit1, setDigit1) = remember {
         mutableStateOf("")
     }
@@ -85,7 +86,6 @@ fun OTPScreen(navController: NavController) {
             )
         }
     }
-
     Column(
         modifier = Modifier
             .background(Color.Gray.copy(alpha = 0.2f))
@@ -93,9 +93,9 @@ fun OTPScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TopAppBar(
-            title = "OTP Verification",
+            title = "Forget Password",
             navController = navController,
-            route = Screens.PhoneScreen.route
+            route = Screens.OtpScreen.route
         )
         Card(
             shape = RoundedCornerShape(30.dp),
@@ -113,78 +113,79 @@ fun OTPScreen(navController: NavController) {
             ) {
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(
-                    text = "An authentication code has been sent to",
-                    fontFamily = RobotoFamily,
+                    text = "We will send a mail to\n" +
+                        "the email address you registered\n" +
+                        "to regain your password",
                     fontSize = 16.sp,
-                    color = colorResource(id = R.color.light_blue)
-                )
-                Text(
-                    text = "(+880) 111 222 333",
                     fontFamily = RobotoFamily,
-                    fontSize = 16.sp,
-                    color = colorResource(id = R.color.light_blue)
+                    color = colorResource(id = R.color.light_blue),
+                    textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.height(18.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
-                    OTPItem(text = digit1, setDigit1)
-                    OTPItem(text = digit2, setDigit2)
-                    OTPItem(text = digit3, setDigit3)
-                    OTPItem(text = digit4, setDigit4)
+                    ForgetOTPItem(text = digit1, setText = setDigit1)
+                    ForgetOTPItem(text = digit2, setText = setDigit2)
+                    ForgetOTPItem(text = digit3, setText = setDigit3)
+                    ForgetOTPItem(text = digit4, setText = setDigit4)
                 }
-                Spacer(modifier = Modifier.height(25.dp))
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                Spacer(modifier = Modifier.height(20.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
                     Text(
-                        text = "I didn't receive code.",
-                        color = colorResource(id = R.color.light_blue),
-                        fontFamily = RobotoFamily,
-                        fontSize = 16.sp
-                    )
-                    Text(
-                        text = " Resend Code",
-                        color = colorResource(id = R.color.cyan),
+                        text = "Not Yet Code",
                         fontFamily = RobotoFamily,
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.W500
+                        color = colorResource(id = R.color.light_blue)
                     )
-
+                    Text(
+                        fontWeight = FontWeight.W700,
+                        text = " Resend Now!",
+                        fontFamily = RobotoFamily,
+                        fontSize = 16.sp,
+                        color = Color(0xFF6C4DDA)
+                    )
                 }
-                Spacer(modifier = Modifier.height(30.dp))
+                Spacer(modifier = Modifier.height(21.dp))
+                Button(
+                    onClick = {
+                        navController.navigate(Screens.ForgetPasswordScreen.route)
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.White,
+                        containerColor = colorResource(id = R.color.cyan)
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(30.dp)
+                        .height(50.dp)
+                ) {
+                    Text(
+                        text = "Send",
+                        fontSize = 18.sp,
+                        fontFamily = RobotoFamily
+                    )
+                }
+                Spacer(modifier = Modifier.height(20.dp))
             }
-        }
-        Button(
-            onClick = {
-                navController.navigate(Screens.CreatePasswordScreen.route)
-            },
-            colors = ButtonDefaults.buttonColors(
-                contentColor = Color.White,
-                containerColor = colorResource(id = R.color.cyan)
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(30.dp)
-                .height(50.dp)
-        ) {
-            Text(
-                text = "Verify Now",
-                fontSize = 18.sp,
-                fontFamily = RobotoFamily
-            )
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OTPItem(text: String, setText: (String) -> Unit) {
+fun ForgetOTPItem(text: String, setText: (String) -> Unit) {
     TextField(
         value = text,
         onValueChange = {
             if (it.length <= 1) {
                 setText(it)
             }
+
         },
         maxLines = 1,
         textStyle = TextStyle(
@@ -192,7 +193,7 @@ fun OTPItem(text: String, setText: (String) -> Unit) {
             fontFamily = RobotoFamily,
             textAlign = TextAlign.Center
         ),
-        shape = RoundedCornerShape(50),
+        shape = RoundedCornerShape(10.dp),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.NumberPassword,
             imeAction = ImeAction.Next,
