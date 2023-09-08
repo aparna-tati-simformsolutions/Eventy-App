@@ -153,7 +153,7 @@ fun ForgetPasswordOTPScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(21.dp))
                 Button(
                     onClick = {
-                        navController.navigate(Screens.ForgetPasswordScreen.route)
+                        navController.navigate(Screens.ChangePasswordScreen.route)
                     },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,

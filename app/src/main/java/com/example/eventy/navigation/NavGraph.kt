@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.eventy.authentication.ChangePasswordScreen
 import com.example.eventy.authentication.CreatePasswordScreen
 import com.example.eventy.authentication.ForgetPasswordOTPScreen
 import com.example.eventy.authentication.ForgetPasswordScreen
@@ -46,6 +47,9 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = Screens.ForgetPasswordOTPScreen.route) {
             ForgetPasswordOTPScreen(navController)
+        }
+        composable(route = Screens.ChangePasswordScreen.route) {
+            ChangePasswordScreen(navController)
         }
     }
 }
