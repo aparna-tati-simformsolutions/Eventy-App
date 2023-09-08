@@ -1,6 +1,7 @@
 package com.example.eventy.authentication
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +14,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,11 +26,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.eventy.R
 import com.example.eventy.common.TopAppBar
+import com.example.eventy.dialogs.PasswordResetEmailSentDialog
 import com.example.eventy.navigation.Screens
 import com.example.eventy.ui.theme.RobotoFamily
 
 @Composable
 fun ForgetPasswordScreen(navController: NavController) {
+    val isDialogOpen = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .background(Color.Gray.copy(alpha = 0.2f))
@@ -35,7 +40,7 @@ fun ForgetPasswordScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TopAppBar(
-            title = "Create Password",
+            title = "Forget Password",
             navController = navController,
             route = Screens.OtpScreen.route
         )
@@ -77,7 +82,7 @@ fun ForgetPasswordScreen(navController: NavController) {
                 )
                 Button(
                     onClick = {
-                        navController.navigate(Screens.ForgetPasswordScreen.route)
+                        isDialogOpen.value = true
                     },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,
@@ -95,6 +100,14 @@ fun ForgetPasswordScreen(navController: NavController) {
                     )
                 }
             }
+        }
+        if (isDialogOpen.value) {
+            PasswordResetEmailSentDialog(
+                onDismiss = {
+                    isDialogOpen.value = false
+                },
+                navController = navController
+            )
         }
         Spacer(modifier = Modifier.height(40.dp))
     }
