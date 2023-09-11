@@ -37,6 +37,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -92,15 +93,35 @@ fun SignUpScreen(navController: NavController) {
                     }
                 }
                 Spacer(modifier = Modifier.height(18.dp))
-                EditText(inputType = KeyboardType.Ascii, placeHolderText = "Full name")
+                EditText(
+                    inputType = KeyboardType.Ascii,
+                    placeHolderText = "Full name",
+                    imeAction = ImeAction.Next
+                )
                 Spacer(modifier = Modifier.height(18.dp))
-                EditText(inputType = KeyboardType.Phone, placeHolderText = "Phone Number")
+                EditText(
+                    inputType = KeyboardType.Phone,
+                    placeHolderText = "Phone Number",
+                    imeAction = ImeAction.Next
+                )
                 Spacer(modifier = Modifier.height(18.dp))
-                EditText(inputType = KeyboardType.Email, placeHolderText = "Email")
+                EditText(
+                    inputType = KeyboardType.Email,
+                    placeHolderText = "Email",
+                    imeAction = ImeAction.Next
+                )
                 Spacer(modifier = Modifier.height(18.dp))
-                EditText(inputType = KeyboardType.Password, placeHolderText = "Password")
+                EditText(
+                    inputType = KeyboardType.Password,
+                    placeHolderText = "Password",
+                    imeAction = ImeAction.Next
+                )
                 Spacer(modifier = Modifier.height(18.dp))
-                EditText(inputType = KeyboardType.Password, placeHolderText = "Confirm Password")
+                EditText(
+                    inputType = KeyboardType.Password,
+                    placeHolderText = "Confirm Password",
+                    imeAction = ImeAction.Done
+                )
                 Spacer(modifier = Modifier.height(30.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -172,7 +193,7 @@ fun SignUpScreen(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditText(inputType: KeyboardType, placeHolderText: String?) {
+fun EditText(inputType: KeyboardType, placeHolderText: String?, imeAction: ImeAction) {
     val text = remember { mutableStateOf("") }
     TextField(
         value = text.value,
@@ -186,7 +207,8 @@ fun EditText(inputType: KeyboardType, placeHolderText: String?) {
         placeholder = { Text(text = placeHolderText ?: "") },
         shape = RoundedCornerShape(50),
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = inputType
+            keyboardType = inputType,
+            imeAction = imeAction
         ),
         modifier = Modifier
             .fillMaxWidth()

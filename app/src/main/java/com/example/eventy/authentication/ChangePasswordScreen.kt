@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -68,11 +69,11 @@ fun ChangePasswordScreen(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(29.dp))
-                PasswordEditText(placeHolderText = "Old Password")
+                PasswordEditText(placeHolderText = "Old Password", imeAction = ImeAction.Next)
                 Spacer(modifier = Modifier.height(15.dp))
-                PasswordEditText(placeHolderText = "Password")
+                PasswordEditText(placeHolderText = "Password", imeAction = ImeAction.Next)
                 Spacer(modifier = Modifier.height(15.dp))
-                PasswordEditText(placeHolderText = "Confirm Password")
+                PasswordEditText(placeHolderText = "Confirm Password", imeAction = ImeAction.Done)
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(
                     onClick = {
@@ -101,7 +102,7 @@ fun ChangePasswordScreen(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordEditText(placeHolderText: String) {
+fun PasswordEditText(placeHolderText: String, imeAction: ImeAction) {
     val text = remember { mutableStateOf("") }
     var showPassword by remember { mutableStateOf(false) }
     TextField(
@@ -126,7 +127,8 @@ fun PasswordEditText(placeHolderText: String) {
         placeholder = { Text(text = placeHolderText) },
         shape = RoundedCornerShape(50),
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = KeyboardType.Password
+            keyboardType = KeyboardType.Password,
+            imeAction = imeAction
         ),
         modifier = Modifier
             .fillMaxWidth()

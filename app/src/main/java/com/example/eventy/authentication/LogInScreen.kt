@@ -33,6 +33,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -70,9 +71,19 @@ fun LogInScreen(navController: NavController) {
                     .padding(21.dp)
             ) {
                 Spacer(modifier = Modifier.height(25.dp))
-                EditText(icon = R.drawable.email, inputType = KeyboardType.Email, placeHolderText = "Email")
+                EditText(
+                    icon = R.drawable.email,
+                    inputType = KeyboardType.Email,
+                    placeHolderText = "Email",
+                    imeAction = ImeAction.Next
+                )
                 Spacer(modifier = Modifier.height(20.dp))
-                EditText(icon = R.drawable.password, inputType = KeyboardType.Ascii, placeHolderText = "Password")
+                EditText(
+                    icon = R.drawable.password,
+                    inputType = KeyboardType.Ascii,
+                    placeHolderText = "Password",
+                    imeAction = ImeAction.Done
+                )
                 Spacer(modifier = Modifier.height(21.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -166,7 +177,7 @@ fun LogInScreen(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditText(icon: Int, inputType: KeyboardType, placeHolderText: String) {
+fun EditText(icon: Int, inputType: KeyboardType, placeHolderText: String, imeAction: ImeAction) {
     val text = remember { mutableStateOf("") }
     TextField(
         value = text.value,
@@ -183,7 +194,8 @@ fun EditText(icon: Int, inputType: KeyboardType, placeHolderText: String) {
         placeholder = { Text(text = placeHolderText) },
         shape = RoundedCornerShape(50),
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = inputType
+            keyboardType = inputType,
+            imeAction = imeAction
         ),
         modifier = Modifier
             .fillMaxWidth()

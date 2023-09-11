@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -72,7 +73,12 @@ fun ForgetPasswordScreen(navController: NavController) {
                     fontSize = 16.sp
                 )
                 Spacer(modifier = Modifier.height(18.dp))
-                EditText(icon = R.drawable.email, inputType = KeyboardType.Email, placeHolderText = "Email")
+                EditText(
+                    icon = R.drawable.email,
+                    inputType = KeyboardType.Email,
+                    placeHolderText = "Email",
+                    imeAction = ImeAction.Done
+                )
                 Spacer(modifier = Modifier.height(25.dp))
                 Text(
                     text = "Email sent to ex*****@gmail.com",
