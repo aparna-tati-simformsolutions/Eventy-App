@@ -3,4 +3,5 @@
     <color name="cyan">#11C9BD</color>
     <color name="light_blue">#363D4E</color>
     <color name="textfield_background">#F9F9FF</color>
+    <color name="gray">#8A8D9F</color>
 </resources>

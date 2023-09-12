@@ -12,6 +12,7 @@ import com.example.eventy.authentication.LogInScreen
 import com.example.eventy.authentication.OTPScreen
 import com.example.eventy.authentication.PhoneScreen
 import com.example.eventy.authentication.SignUpScreen
+import com.example.eventy.authentication.SignupScreenSuccess
 import com.example.eventy.onboarding.OnboardingScreen
 import com.example.eventy.spalsh.SplashScreen
 
@@ -50,6 +51,9 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(route = Screens.ChangePasswordScreen.route) {
             ChangePasswordScreen(navController)
+        }
+        composable(route = Screens.SignupSuccessScreen.route) {
+            SignupScreenSuccess(navController)
         }
     }
 }

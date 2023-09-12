@@ -147,7 +147,9 @@ fun SignUpScreen(navController: NavController) {
                 }
                 Spacer(modifier = Modifier.height(18.dp))
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navController.navigate(Screens.SignupSuccessScreen.route)
+                    },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,
                         containerColor = colorResource(id = R.color.cyan)
